@@ -20,6 +20,7 @@
 @import url(../blocks/elements/__info-container/elements__info-container.css);
 @import url(../blocks/elements/__mesto/elements__mesto.css);
 @import url(../blocks/elements/__like/elements__like.css);
+@import url(../blocks/elements/__like/_liked/elements__like_liked.css);
 
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__container/popup__container.css);
