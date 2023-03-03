@@ -10,7 +10,7 @@
 </head>
 
 <body class="page">
-    <div class="wrapper">
+    <div class="container">
         <header class="header">
             <img class="header__logo" src="./images/logo.svg" alt="Лого Mesto">
         </header>
@@ -75,11 +75,11 @@
                 <div class="popup__container">
                     <h2 class="popup__title">Редактировать профиль</h2>
                     <form class="popup__form">
-                        <input class="popup__input" type="text" placeholder="Имя" name="name" minlength="1" maxlength="30" required>
+                        <input class="popup__input" id="name" type="text" placeholder="Имя" name="name" minlength="1" maxlength="30" required>
                         <div class="popup__form-line"></div>
-                        <input class="popup__input" type="text" placeholder="О себе" name="about" minlength="1" maxlength="50" required>
+                        <input class="popup__input" id="about" type="text" placeholder="О себе" name="about" minlength="1" maxlength="50" required>
                         <div class="popup__form-line"></div>
-                        <button class="popup__submit-button" type="submit">Сохранить</button>
+                        <button class="popup__submit-button popop__open" type="submit">Сохранить</button>
                     </form>
                     <button class="popup__close-icon"></button>
                 </div>
@@ -90,7 +90,7 @@
             <p class="footer__text">&copy; 2023 Mesto Russia</p>
         </footer>
     </div>
-
+<script src="./js/edit.js"></script>
 </body>
 
 </html>
