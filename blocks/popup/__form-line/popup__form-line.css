@@ -1,0 +1,7 @@
+.popup__form-line{
+    width: 83%;
+    height: 1px;
+    background-color: #000;
+    margin: 13px auto 0 auto;
+    opacity: .2;
+}
