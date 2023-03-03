@@ -21,13 +21,6 @@ function popupOpen() {
 
 }
 
-
-function popupClose() {
-
-    formElement.classList.remove('popup__opened');
-
-}
-
 function handleFormSubmit(evt) {
     
     evt.preventDefault();
@@ -40,8 +33,12 @@ function handleFormSubmit(evt) {
 
 }
 
+formElement.addEventListener('submit', handleFormSubmit);
+
 editButton.addEventListener('click', popupOpen);
 
-closeButton.addEventListener('click', popupClose);
+closeButton.addEventListener('click', function(){
 
-formElement.addEventListener('submit', handleFormSubmit);
+    formElement.classList.remove('popup__opened'); 
+
+});
