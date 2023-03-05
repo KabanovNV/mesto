@@ -4,7 +4,7 @@
     font-size: 14px;
     line-height: 1.2;
     width: 83%;
-    height: 27px;
+    min-height: 27px;
     display: block;
     margin: 30px auto 0 auto;
     border: none;
