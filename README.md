@@ -1,17 +1,18 @@
 # Проект: Место
 
-### Обзор
-
-* Figma
-* Картинки
+## Описание
+Данный проект сверстан в рамках обучения по специальности "Веб-разработчик" на платформе Яндекс.Практикум.
 
 **Figma**
 
 * [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
 
-**Картинки**
+### Языки и инструменты
 
-Доставать картинки предстоит из Фигмы. Это расхожая практика, поэтому полезно потренироваться.
-Не забудьте [оптимизировать картинки](https://tinypng.com/), чтобы ваш сайт загружался быстрее.
+<img align="left" alt="HTML5" width="26px" src="https://github.com/KabanovNV/icons/blob/main/html_icon_24px.png" />
+<img align="left" alt="CSS3" width="26px" src="https://github.com/KabanovNV/icons/blob/main/css_icon_32px.png" />
+<img align="left" alt="Visual Studio Code" width="26px" src="https://github.com/KabanovNV/icons/blob/main/visualstudiocode_icon_32px.png" />
+<img align="left" alt="GitHub" width="26px" src="https://github.com/KabanovNV/icons/blob/main/github-50px.png" />
+<img align="left" alt="JS" width="26px" src="https://github.com/KabanovNV/icons/blob/main/javascript_icon_48px.png" /><br>
 
-Удачи!
+##### Николай Кабанов
