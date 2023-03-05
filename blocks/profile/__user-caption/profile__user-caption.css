@@ -10,3 +10,11 @@
     white-space: nowrap;
     overflow: hidden;
 }
+
+@media screen and (max-width: 700px){
+    .profile__user-caption{
+        font-size: 14px;
+        text-align: center;
+        margin-top: 14px;
+    }
+}

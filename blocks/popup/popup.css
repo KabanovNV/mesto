@@ -3,7 +3,5 @@
     inset: 0;
     background-color: rgba(0,0,0,.5);
     display: none;
-
-    /* padding: 19px; для маленьких экранов */
-    /* overflow-y: auto; скрол для маленьких жкранов */
 }
+

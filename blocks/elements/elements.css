@@ -5,5 +5,11 @@
     grid-auto-rows: 361px;
     grid-gap: 20px 17px;
     margin-top: 46px;
-    
+    justify-items: center;
+}
+
+@media screen and (max-width: 900px){
+    .elements{
+        margin: 46px 19px 0;
+    }
 }

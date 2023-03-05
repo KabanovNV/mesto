@@ -21,6 +21,12 @@ function popupOpen() {
 
 }
 
+function popupClose() {
+
+    formElement.classList.remove('popup__opened');
+
+}
+
 function handleFormSubmit(evt) {
     
     evt.preventDefault();
