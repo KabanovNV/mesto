@@ -16,7 +16,7 @@ let liked = document.querySelectorAll('.elements__like');
 
 function popupOpen() {
 
-    formElement.classList.add('popup__opened');
+    formElement.classList.add('popup_opened');
 
     nameInput.value = container.querySelector('.profile__user-name').textContent;
 
@@ -26,7 +26,7 @@ function popupOpen() {
 
 function popupClose() {
 
-    formElement.classList.remove('popup__opened');
+    formElement.classList.remove('popup_opened');
 
 }
 
@@ -62,6 +62,6 @@ editButton.addEventListener('click', popupOpen);
 
 closeButton.addEventListener('click', function(){
 
-    formElement.classList.remove('popup__opened'); 
+    formElement.classList.remove('popup_opened'); 
 
 });
