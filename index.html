@@ -31,66 +31,71 @@
                 <div class="elements__item">
                     <img class="elements__image" src="./images/baikal.jpg" alt="Байкал">
                     <div class="elements__info-container">
-                        <p class="elements__mesto">Байкал</p>
-                        <div class="elements__like"></div>
+                        <h2 class="elements__mesto">Байкал</h2>
+                        <button class="elements__like" type="button"></button>
                     </div>
                 </div>
+
                 <div class="elements__item">
                     <img class="elements__image" src="./images/Altay.jpg" alt="Алтай">
                     <div class="elements__info-container">
-                        <p class="elements__mesto">Алтай</p>
-                        <div class="elements__like"></div>
+                        <h2 class="elements__mesto">Алтай</h2>
+                        <button class="elements__like" type="button"></button>
                     </div>
                 </div>
+
                 <div class="elements__item">
                     <img class="elements__image" src="./images/karachaevo-cherkesya.jpg" alt="Карачаево-Черкесия">
                     <div class="elements__info-container">
-                        <p class="elements__mesto">Карачаево-Черкесия</p>
-                        <div class="elements__like"></div>
+                        <h2 class="elements__mesto">Карачаево-Черкесия</h2>
+                        <button class="elements__like" type="button"></button>
                     </div>
                 </div>
+
                 <div class="elements__item">
                     <img class="elements__image" src="./images/Kareliya.jpg" alt="Карелия">
                     <div class="elements__info-container">
-                        <p class="elements__mesto">Карелия</p>
-                        <div class="elements__like"></div>
+                        <h2 class="elements__mesto">Карелия</h2>
+                        <button class="elements__like" type="button"></button>
                     </div>
                 </div>
+
                 <div class="elements__item">
                     <img class="elements__image" src="./images/Arkhyz.jpg" alt="Архыз">
                     <div class="elements__info-container">
-                        <p class="elements__mesto">Архыз</p>
-                        <div class="elements__like"></div>
+                        <h2 class="elements__mesto">Архыз</h2>
+                        <button class="elements__like" type="button"></button>
                     </div>
                 </div>
+
                 <div class="elements__item">
                     <img class="elements__image" src="./images/Kamchatka.jpg" alt="Камчатка">
                     <div class="elements__info-container">
-                        <p class="elements__mesto">Камчатка</p>
-                        <div class="elements__like"></div>
+                        <h2 class="elements__mesto">Камчатка</h2>
+                        <button class="elements__like" type="button"></button>
                     </div>
                 </div>
-            </section>
-            <section class="popup">
-                <div class="popup__container">
-                    <h2 class="popup__title">Редактировать профиль</h2>
-                    <form class="popup__form">
-                        <input class="popup__input" id="name" type="text" placeholder="Имя" name="name" minlength="1" maxlength="30" required>
-                        <div class="popup__form-line"></div>
-                        <input class="popup__input" id="about" type="text" placeholder="О себе" name="about" minlength="1" maxlength="50" required>
-                        <div class="popup__form-line"></div>
-                        <button class="popup__submit-button" type="submit">Сохранить</button>
-                    </form>
-                    <button class="popup__close-icon"></button>
-                </div>
-
             </section>
         </main>
         <footer class="footer">
             <p class="footer__text">&copy; 2023 Mesto Russia</p>
         </footer>
+
+        <section class="popup">
+            <div class="popup__container">
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <form class="popup__form" name="popupForm">
+                    <input class="popup__input" id="name" type="text" placeholder="Имя" name="name" minlength="1"
+                        maxlength="30" required>
+                    <input class="popup__input" id="about" type="text" placeholder="О себе" name="about" minlength="1"
+                        maxlength="50" required>
+                    <button class="popup__submit-button" type="submit">Сохранить</button>
+                </form>
+                <button class="popup__close-button" type="button"></button>
+            </div>
+        </section>
     </div>
-<script src="./scripts/index.js"></script>
+    <script src="./scripts/index.js"></script>
 </body>
 
 </html>

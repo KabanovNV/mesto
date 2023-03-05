@@ -1,7 +1,9 @@
 .elements__like{
     width: 22px;
     height: 19px;
+    border: 0;
     background-image: url(../../../images/heart.svg);
+    background-color: transparent;
     margin: 0;
     transition: opacity .2s linear;
     cursor: pointer;
