@@ -3,6 +3,8 @@
 ## Описание
 Данный проект сверстан в рамках обучения по специальности "Веб-разработчик" на платформе Яндекс.Практикум.
 
+С проектом можно ознакомиться [здесь](https://kabanovnv.github.io/mesto/)
+
 **Figma**
 
 * [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
