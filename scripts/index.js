@@ -2,9 +2,11 @@ let container = document.querySelector('.container');
 
 let editButton = container.querySelector('.profile__edit-button');
 
-let closeButton = container.querySelector('.popup__close-button')
+let closeButton = container.querySelector('.popup__close-button');
 
-let formElement = container.querySelector('.popup');
+let popup = container.querySelector('.popup')
+
+let formElement = container.querySelector('.popup__container');
 
 let nameInput = document.getElementById('name');
 
@@ -20,7 +22,7 @@ let jobProfile = container.querySelector('.profile__user-caption');
 
 function popupOpen() {
 
-    formElement.classList.add('popup_opened');
+    popup.classList.add('popup_opened');
 
     nameInput.value = nameProfile.textContent;
 
@@ -30,7 +32,7 @@ function popupOpen() {
 
 function popupClose() {
 
-    formElement.classList.remove('popup_opened');
+    popup.classList.remove('popup_opened');
 
 }
 
@@ -45,6 +47,8 @@ function handleFormSubmit(evt) {
     popupClose()
 
 }
+// Здесь не совсем понятен комментарий:"Логика не реализуется ..." она не реализуется в данном Спринте? 
+// Если не реализуется в данном спринте, то зачем она есть в макете?
 
 // liked.forEach(function (elem){
 //     elem.addEventListener('click', function(){    

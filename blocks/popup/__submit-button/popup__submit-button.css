@@ -8,14 +8,23 @@
     background-color: #000;
     color: #fff;
     border-radius: 2px;
-    margin: 48px auto 37px;
+    margin: 48px auto 0;
     padding: 0;
     border: none;
     display: block;
     cursor: pointer;
-    transition: opacity .2s linear;
+    transition: background-color .2s linear;
 }
 
 .popup__submit-button:hover{
-    opacity: .8;
+    background-color: rgba(0,0,0, .8);
+}
+
+@media screen and (max-width: 530px){
+    .popup__submit-button{
+        font-size: 14px;
+        max-height: 46px;
+        margin: 45px auto 0;
+        width: 100%;
+    }
 }

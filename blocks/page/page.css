@@ -1,5 +1,5 @@
 .page{
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     -webkit-text-size-adjust: 100%;
@@ -10,5 +10,7 @@
     height: 100%;
     background-color: #000;
     box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
