@@ -1,4 +1,4 @@
-.elements__like{
+.mesto__like{
     width: 22px;
     height: 19px;
     border: 0;
@@ -9,6 +9,10 @@
     cursor: pointer;
 }
 
-.elements__like:hover{
+.mesto__like:hover{
     opacity: .5;
+}
+
+.mesto__like:active{
+    opacity: 1;
 }

@@ -16,10 +16,6 @@ let nameProfile = container.querySelector('.profile__user-name');
 
 let jobProfile = container.querySelector('.profile__user-caption');
 
-// let liked = document.querySelectorAll('.elements__like');  
-
-
-
 function popupOpen() {
 
     popup.classList.add('popup_opened');
@@ -47,14 +43,6 @@ function handleFormSubmit(evt) {
     popupClose()
 
 }
-// Здесь не совсем понятен комментарий:"Логика не реализуется ..." она не реализуется в данном Спринте? 
-// Если не реализуется в данном спринте, то зачем она есть в макете?
-
-// liked.forEach(function (elem){
-//     elem.addEventListener('click', function(){    
-//         elem.classList.add('elements__like_liked');
-//     });
-// });
 
 formElement.addEventListener('submit', handleFormSubmit);
 

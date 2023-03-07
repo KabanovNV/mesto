@@ -1,18 +1,11 @@
 .profile{
     display: flex;
-    margin-top: 40px;
-}
-
-@media screen and (max-width: 900px){
-    .profile{
-        margin: 42px 19px 0px;
-    }
 }
 
 @media screen and (max-width: 700px){
     .profile {
         max-width: 100%;
         display: block;
-        margin: 42px auto 36px;
+        margin: 42px auto 0;
     }
 }
