@@ -8,6 +8,12 @@
     justify-items: center;
 }
 
+@media screen and (max-width: 900px){
+    .elements{
+        grid-gap: 20px 3px;
+    }
+}
+
 @media screen and (max-width: 619px){
     .elements{
         margin-top: 36px;

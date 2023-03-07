@@ -3,11 +3,11 @@
   min-height: 33px;
   margin: 45px 0 41px;
 }
-/* @media screen and (max-width: 900px){
+@media screen and (max-width: 900px){
     .header__logo{
       margin-left: 19px;  
     } 
-} */
+}
 
 @media screen and (max-width: 530px){
   .header__logo{

@@ -5,14 +5,6 @@
 
 @media screen and (max-width: 900px){
     .container{
-        margin: 0 19px 0;
         max-width: 100%;
-    }
-}
-
-@media screen and (max-width: 619px){
-    .container{
-        margin: 0 auto 0;
-        max-width: 282px;
     }
 }
