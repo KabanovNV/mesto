@@ -6,7 +6,7 @@ let closeButton = container.querySelector('.popup__close-button');
 
 let popup = container.querySelector('.popup')
 
-let formElement = container.querySelector('.popup__container');
+let formElement = container.querySelector('.popup__form');
 
 let nameInput = document.getElementById('name');
 
