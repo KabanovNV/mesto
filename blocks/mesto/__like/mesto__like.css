@@ -3,6 +3,8 @@
     height: 19px;
     border: 0;
     background-image: url(../../../images/heart.svg);
+    background-position: center;
+    background-repeat: no-repeat;
     background-color: transparent;
     margin: 0;
     transition: opacity .2s linear;
@@ -11,8 +13,4 @@
 
 .mesto__like:hover{
     opacity: .5;
-}
-
-.mesto__like:active{
-    opacity: 1;
 }

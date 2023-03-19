@@ -22,18 +22,18 @@
                     <h1 class="profile__user-name">Жак-Ив Кусто</h1>
                     <button class="profile__edit-button" type="button"></button>
                     <p class="profile__user-caption">Исследователь океана</p>
-
                 </div>
                 <button class="profile__add-button" type="button"></button>
             </section>
 
             <section class="elements">
-                <article class="mesto">
+                <!-- <article class="mesto">
                     <img class="mesto__image" src="./images/baikal.jpg" alt="Байкал">
                     <div class="mesto__info-container">
                         <h2 class="mesto__title">Байкал</h2>
                         <button class="mesto__like" type="button"></button>
                     </div>
+                    <button class="mesto__delete" type="button"></button>
                 </article>
 
                 <article class="mesto">
@@ -74,28 +74,66 @@
                         <h2 class="mesto__title">Камчатка</h2>
                         <button class="mesto__like" type="button"></button>
                     </div>
-                </article>
+                </article> -->
             </section>
+
         </main>
         <footer class="footer">
             <p class="footer__text">&copy; 2023 Mesto Russia</p>
         </footer>
 
-        <section class="popup">
+        <section class="popup popup_edit">
             <div class="popup__container">
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <form class="popup__form" name="popupForm">
+                <form class="popup__form" name="popupForm" id="popupFormEdit">
                     <input class="popup__input" id="name" type="text" placeholder="Имя" name="name" minlength="1"
                         maxlength="30" required>
                     <input class="popup__input" id="about" type="text" placeholder="О себе" name="about" minlength="1"
                         maxlength="50" required>
-                    <button class="popup__submit-button" type="submit">Сохранить</button>
+                    <button class="popup__submit-button" id="edit-button" type="submit">Сохранить</button>
                 </form>
-                <button class="popup__close-button" type="button"></button>
+                <button class="popup__close-button popup__close-button_edit" type="button"></button>
+            </div>
+        </section>
+
+        <section class="popup popup_add">
+            <div class="popup__container">
+                <h2 class="popup__title">Новое место</h2>
+                <form class="popup__form" name="popupForm" id="popupFormAdd">
+                    <input class="popup__input" id="new-mesto" type="text" placeholder="Название" name="name" minlength="1"
+                        maxlength="30" required>
+                    <input class="popup__input" id="new-link" type="text" placeholder="Ссылка на картинку" name="about" minlength="1"
+                        maxlength="300" required>
+                    <button class="popup__submit-button" id="add-button" type="submit">Сохранить</button>
+                </form>
+                <button class="popup__close-button popup__close-button_add" type="button"></button>
+            </div>
+        </section>
+
+        <section class="popup popup_image-section">
+            <div class="popup__image-container">
+                <figure class="popup__figure">
+                    <img class="popup__image" src="" alt="">
+                    <figcaption class="popup__image-caption"></figcaption>
+                </figure>
+                <button class="popup__close-button popup__close-button_image" type="button"></button>
             </div>
         </section>
     </div>
+
+    <template class="mesto-template">
+        <article class="mesto">
+            <img class="mesto__image" src="" alt="">
+            <div class="mesto__info-container">
+                <h2 class="mesto__title"></h2>
+                <button class="mesto__like" type="button"></button>
+            </div>
+            <button class="mesto__delete" type="button"></button>
+        </article>
+    </template>
+
     <script src="./scripts/index.js"></script>
+
 </body>
 
 </html>
