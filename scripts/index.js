@@ -141,7 +141,7 @@ function initCards(name, link) {
     // popup картинки
     popupImg(mestoImage, name, link);
 
-    elementsList.append(mestoElement); 
+    elementsList.prepend(mestoElement); 
 }
 
 
