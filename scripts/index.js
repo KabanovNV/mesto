@@ -1,85 +1,69 @@
-const initialCards = [
-    {
-      name: 'Алтай',
-      link: './images/Altay.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: './images/baikal.jpg'
-    },
-    {
-      name: 'Карачаево-Черкесия',
-      link: './images/karachaevo-cherkesya.jpg'
-    },
-    {
-      name: 'Карелия',
-      link: './images/Kareliya.jpg'
-    },
-    {
-      name: 'Архыз',
-      link: './images/Arkhyz.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: './images/Kamchatka.jpg'
-    }
-  ]; 
+import {initialCards} from './constants.js';
 
-let container = document.querySelector('.container');
-let editButton = container.querySelector('.profile__edit-button');
-let addButton = container.querySelector('.profile__add-button');
-let closeButtonEdit = container.querySelector('.popup__close-button_edit');
-let closeButtonAdd = container.querySelector('.popup__close-button_add');
-let closeButtonImage = container.querySelector('.popup__close-button_image');
-let popupEdit = container.querySelector('.popup_edit');
-let popupAdd = container.querySelector('.popup_add');
-let popupImage = container.querySelector('.popup_image-section');
-let formElementAdd = document.getElementById('popupFormAdd');
-let formElementEdit = document.getElementById('popupFormEdit');
-let nameInput = document.getElementById('name');
-let jobInput = document.getElementById('about');
-let nameProfile = container.querySelector('.profile__user-name');
-let jobProfile = container.querySelector('.profile__user-caption');
-let newMesto = document.getElementById('new-mesto');
-let newLink = document.getElementById('new-link');
-
+const container = document.querySelector('.container');
+const editButton = container.querySelector('.profile__edit-button');
+const addButton = container.querySelector('.profile__add-button');
+const closeButtonEdit = container.querySelector('.popup__close-button_edit');
+const closeButtonAdd = container.querySelector('.popup__close-button_add');
+const closeButtonImage = container.querySelector('.popup__close-button_image');
+const popupEdit = container.querySelector('.popup_edit');
+const popupAdd = container.querySelector('.popup_add');
+const popupImage = container.querySelector('.popup_image-section');
+const formElementAdd = container.querySelector('.popup__form-add'); 
+const formElementEdit = container.querySelector('.popup__form-edit'); 
 const elementsList = document.querySelector('.elements');
 const mestoTemplate = document.querySelector('.mesto-template').content;
 
 
-function popupOpenEdit() {
-    popupEdit.classList.add('popup_opened');
+let nameInput = container.querySelector('.popup__input-name'); 
+let jobInput = container.querySelector('.popup__input-about'); 
+let nameProfile = container.querySelector('.profile__user-name');
+let jobProfile = container.querySelector('.profile__user-caption');
+let newMesto = container.querySelector('.popup__input-new-mesto'); 
+let newLink = container.querySelector('.popup__input-new-link');
+
+
+const openPopup = popupForm => {
+  popupForm.classList.add('popup_opened');
+}
+
+const closePopup = popupForm => {
+  popupForm.classList.remove('popup_opened');
+}
+
+function openEdit() {
+    openPopup(popupEdit);
     nameInput.value = nameProfile.textContent;
     jobInput.value = jobProfile.textContent;
 }
 
 
-function popupOpenAdd() {
-    popupAdd.classList.add('popup_opened');
-    newMesto.textContent = "Название";
-    newLink.textContent = "Ссылка на картинку";
+function openAdd() {
+    openPopup(popupAdd);
 }
 
 
-function popupOpenImage(name, link) {
+function openImage(name, link) {
     popupImage.querySelector('.popup__image').src = link;
+    popupImage.querySelector('.popup__image').alt = name;
     popupImage.querySelector('.popup__image-caption').textContent = name;
-    popupImage.classList.add('popup_opacity_dark', 'popup_opened');
+    openPopup(popupImage);
 }
 
 
-function popupCloseEdit() {
-    popupEdit.classList.remove('popup_opened');
+function closeEdit() {
+    closePopup(popupEdit);  
 }
 
 
-function popupCloseAdd() {
-    popupAdd.classList.remove('popup_opened');
+function closeAdd() {
+    closePopup(popupAdd);  
+    formElementAdd.reset();
 }
 
 
-function popupCloseImage() {
-    popupImage.classList.remove('popup_opened');
+function closeImage() {
+    closePopup(popupImage);
 }
 
 
@@ -87,81 +71,71 @@ function handleSubmitEdit(evt) {
     evt.preventDefault();
     nameProfile.textContent = nameInput.value;
     jobProfile.textContent = jobInput.value;
-    popupCloseEdit();
+    closeEdit();
 }
 
 function handleSubmitAdd(evt) {
   evt.preventDefault();
-  initCards(newMesto.value, newLink.value);
-  popupCloseAdd();
-
-
+  initCard(newMesto.value, newLink.value);
+  closeAdd();
 }
 
-function delMesto(mesto){
-    mesto.addEventListener('click', event => {
+function initDelMesto(mestoDeleteButton){
+    mestoDeleteButton.addEventListener('click', event => {
       event.target.closest('.mesto').remove();
   });
 }
 
 
-function likeMesto(mesto){
-  mesto.addEventListener('click', event => {
+function initLikeMesto(mestoLikeButton){
+  mestoLikeButton.addEventListener('click', event => {
     event.target.classList.toggle('mesto__like_liked');
   });  
 }
 
 
-function popupImg(mesto, name, link){
-  mesto.addEventListener('click', event => {
+function initOpenPopupImg(mestoImg, name, link){
+  mestoImg.addEventListener('click', event => {
     event.preventDefault();
-    popupOpenImage(name, link);
+    openImage(name, link);
   });
 }
 
-
-function initCards(name, link) {
-
-  const mestoElement = mestoTemplate.cloneNode(true);
-  const mestoLike = mestoElement.querySelector('.mesto__like');
-  const mestoDelete = mestoElement.querySelector('.mesto__delete');
-  const mestoImage = mestoElement.querySelector('.mesto__image');
-  const mestoTitle = mestoElement.querySelector('.mesto__title');
+function createCard(elem, name, link) {
+  const mestoLike = elem.querySelector('.mesto__like');
+  const mestoDelete = elem.querySelector('.mesto__delete');
+  const mestoImage = elem.querySelector('.mesto__image');
+  const mestoTitle = elem.querySelector('.mesto__title');
 
     mestoImage.src = link;
     mestoImage.alt = name;
     mestoTitle.textContent = name;
 
     // Like
-    likeMesto(mestoLike);
+    initLikeMesto(mestoLike);
 
     // Удаление элемента
-    delMesto(mestoDelete);
+    initDelMesto(mestoDelete);
 
     // popup картинки
-    popupImg(mestoImage, name, link);
+    initOpenPopupImg(mestoImage, name, link);
+}
 
-    elementsList.prepend(mestoElement); 
+function initCard(name, link) {
+  const mestoElement = mestoTemplate.cloneNode(true);
+  createCard(mestoElement, name, link);
+  elementsList.prepend(mestoElement); 
 }
 
 
 initialCards.forEach( item => {
-    initCards(item.name, item.link);
+    initCard(item.name, item.link);
 });
-
-// formElement.forEach( elem => {
-//   elem.addEventListener('submit', handleFormSubmit);
-// })
 
 formElementEdit.addEventListener('submit', handleSubmitEdit);
 formElementAdd.addEventListener('submit', handleSubmitAdd);
-editButton.addEventListener('click', popupOpenEdit);
-addButton.addEventListener('click',popupOpenAdd)
-closeButtonEdit.addEventListener('click', popupCloseEdit); 
-closeButtonAdd.addEventListener('click', popupCloseAdd);
-closeButtonImage.addEventListener('click', popupCloseImage);
-
-
-
-
-
+editButton.addEventListener('click', openEdit);
+addButton.addEventListener('click',openAdd)
+closeButtonEdit.addEventListener('click', closeEdit); 
+closeButtonAdd.addEventListener('click', closeAdd);
+closeButtonImage.addEventListener('click', closeImage);
