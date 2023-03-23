@@ -13,22 +13,20 @@ const formElementAdd = container.querySelector('.popup__form-add');
 const formElementEdit = container.querySelector('.popup__form-edit'); 
 const elementsList = document.querySelector('.elements');
 const mestoTemplate = document.querySelector('.mesto-template').content;
+const nameInput = container.querySelector('.popup__input-name'); 
+const jobInput = container.querySelector('.popup__input-about'); 
+const nameProfile = container.querySelector('.profile__user-name');
+const jobProfile = container.querySelector('.profile__user-caption');
+const newMesto = container.querySelector('.popup__input-new-mesto'); 
+const newLink = container.querySelector('.popup__input-new-link');
 
 
-let nameInput = container.querySelector('.popup__input-name'); 
-let jobInput = container.querySelector('.popup__input-about'); 
-let nameProfile = container.querySelector('.profile__user-name');
-let jobProfile = container.querySelector('.profile__user-caption');
-let newMesto = container.querySelector('.popup__input-new-mesto'); 
-let newLink = container.querySelector('.popup__input-new-link');
-
-
-const openPopup = popupForm => {
-  popupForm.classList.add('popup_opened');
+const openPopup = popup => {
+  popup.classList.add('popup_opened');
 }
 
-const closePopup = popupForm => {
-  popupForm.classList.remove('popup_opened');
+const closePopup = popup => {
+  popup.classList.remove('popup_opened');
 }
 
 function openEdit() {
@@ -76,7 +74,7 @@ function handleSubmitEdit(evt) {
 
 function handleSubmitAdd(evt) {
   evt.preventDefault();
-  initCard(newMesto.value, newLink.value);
+  renderCard(newMesto.value, newLink.value);
   closeAdd();
 }
 
@@ -121,7 +119,7 @@ function createCard(elem, name, link) {
     initOpenPopupImg(mestoImage, name, link);
 }
 
-function initCard(name, link) {
+function renderCard(name, link) {
   const mestoElement = mestoTemplate.cloneNode(true);
   createCard(mestoElement, name, link);
   elementsList.prepend(mestoElement); 
@@ -129,7 +127,7 @@ function initCard(name, link) {
 
 
 initialCards.forEach( item => {
-    initCard(item.name, item.link);
+    renderCard(item.name, item.link);
 });
 
 formElementEdit.addEventListener('submit', handleSubmitEdit);
