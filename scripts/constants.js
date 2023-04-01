@@ -24,3 +24,5 @@ export const initialCards = [
       link: './images/Kamchatka.jpg'
     }
   ]; 
+
+  
