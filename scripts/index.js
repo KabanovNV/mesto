@@ -1,32 +1,34 @@
-import {initialCards} from './constants.js';
-
-const container = document.querySelector('.container');
-const editButton = container.querySelector('.profile__edit-button');
-const addButton = container.querySelector('.profile__add-button');
-const closeButtonEdit = container.querySelector('.popup__close-button_edit');
-const closeButtonAdd = container.querySelector('.popup__close-button_add');
-const closeButtonImage = container.querySelector('.popup__close-button_image');
-const popupEdit = container.querySelector('.popup_edit');
-const popupAdd = container.querySelector('.popup_add');
-const popupImage = container.querySelector('.popup_image-section');
-const formElementAdd = container.querySelector('.popup__form-add'); 
-const formElementEdit = container.querySelector('.popup__form-edit'); 
-const elementsList = document.querySelector('.elements');
-const mestoTemplate = document.querySelector('.mesto-template').content;
-const nameInput = container.querySelector('.popup__input-name'); 
-const jobInput = container.querySelector('.popup__input-about'); 
-const nameProfile = container.querySelector('.profile__user-name');
-const jobProfile = container.querySelector('.profile__user-caption');
-const newMesto = container.querySelector('.popup__input-new-mesto'); 
-const newLink = container.querySelector('.popup__input-new-link');
-
+import {initialCards,
+  editButton,
+  addButton,
+  closeButtonEdit,
+  closeButtonAdd,
+  closeButtonImage,
+  popupEdit,
+  popupAdd,
+  popupImage,
+  formElementAdd,
+  formElementEdit,
+  elementsList,
+  mestoTemplate,
+  nameInput,
+  nameProfile,
+  jobInput,
+  jobProfile,
+  newMesto,
+  newLink,
+  ESC_CODE,
+  closePopupOverlay
+} from './constants.js';
 
 const openPopup = popup => {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closeOnEsc);
 }
 
 const closePopup = popup => {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeOnEsc);
 }
 
 function openEdit() {
@@ -84,13 +86,11 @@ function initDelMesto(mestoDeleteButton){
   });
 }
 
-
 function initLikeMesto(mestoLikeButton){
   mestoLikeButton.addEventListener('click', event => {
     event.target.classList.toggle('mesto__like_liked');
   });  
 }
-
 
 function initOpenPopupImg(mestoImg, name, link){
   mestoImg.addEventListener('click', event => {
@@ -125,11 +125,18 @@ function renderCard(name, link) {
   elementsList.prepend(mestoElement); 
 }
 
+function closeOnEsc(evt) {
+  if (evt.keyCode === ESC_CODE) {
+    const popupClose = document.querySelector('.popup_opened');
+    closePopup(popupClose);
+  }
+}
 
 initialCards.forEach( item => {
     renderCard(item.name, item.link);
 });
 
+popupEdit.addEventListener('keydown', closeOnEsc);
 formElementEdit.addEventListener('submit', handleSubmitEdit);
 formElementAdd.addEventListener('submit', handleSubmitAdd);
 editButton.addEventListener('click', openEdit);
@@ -137,3 +144,11 @@ addButton.addEventListener('click',openAdd)
 closeButtonEdit.addEventListener('click', closeEdit); 
 closeButtonAdd.addEventListener('click', closeAdd);
 closeButtonImage.addEventListener('click', closeImage);
+
+closePopupOverlay.forEach(item => {
+  item.addEventListener('click', evt => {
+    if (evt.target === evt.currentTarget) {
+      closePopup(evt.target.closest('.popup'));
+    }
+  })
+})

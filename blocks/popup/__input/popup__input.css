@@ -6,12 +6,13 @@
     width: 100%;
     min-height: 27px;
     display: block;
-    margin: 29px auto 0 auto;
+    margin: 0 auto 5px auto;
     border: none;
     border-bottom: 1px solid rgba(0,0,0,0.2);
     padding: 0;
+    outline: none;
 }
 
-.popup__input:first-of-type{
+/* .popup__input:first-of-type{
     margin: 0 auto;
-}
+} */
