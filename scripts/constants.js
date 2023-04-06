@@ -18,7 +18,7 @@ export {initialCards,
   newMesto,
   newLink,
   ESC_CODE,
-  formValidationConfig,
+  enableValidation,
   closePopupOverlay,
 }
 
@@ -72,7 +72,7 @@ const closePopupOverlay = document.querySelectorAll('.popup');
 
 const ESC_CODE = 27;
 
-const formValidationConfig = {
+const enableValidation = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__submit-button',
@@ -80,3 +80,4 @@ const formValidationConfig = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible'
 }
+// formValidationConfig

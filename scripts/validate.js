@@ -1,4 +1,4 @@
-import { formValidationConfig as config} from "./constants.js";
+import { enableValidation as config} from "./constants.js";
 
 const showInputError = (formElement, inputElement, errorMessage) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);

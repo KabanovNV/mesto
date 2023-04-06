@@ -1,4 +1,5 @@
-import {initialCards,
+import {
+  initialCards,
   editButton,
   addButton,
   closeButtonEdit,
@@ -18,6 +19,7 @@ import {initialCards,
   newMesto,
   newLink,
   ESC_CODE,
+  enableValidation,
   closePopupOverlay
 } from './constants.js';
 
@@ -31,124 +33,152 @@ const closePopup = popup => {
   document.removeEventListener('keydown', closeOnEsc);
 }
 
-function openEdit() {
-    openPopup(popupEdit);
-    nameInput.value = nameProfile.textContent;
-    jobInput.value = jobProfile.textContent;
+const openEdit = () => {
+  resetValidationStyle(enableValidation);
+  openPopup(popupEdit);
+  nameInput.value = nameProfile.textContent;
+  jobInput.value = jobProfile.textContent;
 }
 
 
-function openAdd() {
-    openPopup(popupAdd);
+const openAdd = () => {
+  resetValidationStyle(enableValidation);
+  openPopup(popupAdd);
 }
 
 
-function openImage(name, link) {
-    popupImage.querySelector('.popup__image').src = link;
-    popupImage.querySelector('.popup__image').alt = name;
-    popupImage.querySelector('.popup__image-caption').textContent = name;
-    openPopup(popupImage);
+const openImage = (name, link) => {
+  popupImage.querySelector('.popup__image').src = link;
+  popupImage.querySelector('.popup__image').alt = name;
+  popupImage.querySelector('.popup__image-caption').textContent = name;
+  openPopup(popupImage);
 }
 
 
-function closeEdit() {
-    closePopup(popupEdit);  
+const closeEdit = () => {
+  closePopup(popupEdit);
 }
 
 
-function closeAdd() {
-    closePopup(popupAdd);  
-    formElementAdd.reset();
+const closeAdd = () => {
+  closePopup(popupAdd);
+  formElementAdd.reset();
 }
 
 
-function closeImage() {
-    closePopup(popupImage);
+const closeImage = () => {
+  closePopup(popupImage);
 }
 
 
-function handleSubmitEdit(evt) {
-    evt.preventDefault();
-    nameProfile.textContent = nameInput.value;
-    jobProfile.textContent = jobInput.value;
-    closeEdit();
+const handleSubmitEdit = (evt) => {
+  evt.preventDefault();
+  nameProfile.textContent = nameInput.value;
+  jobProfile.textContent = jobInput.value;
+  closeEdit();
 }
 
-function handleSubmitAdd(evt) {
+const handleSubmitAdd = (evt) => {
   evt.preventDefault();
   renderCard(newMesto.value, newLink.value);
   closeAdd();
 }
 
-function initDelMesto(mestoDeleteButton){
-    mestoDeleteButton.addEventListener('click', event => {
-      event.target.closest('.mesto').remove();
+const initDelMesto = (mestoDeleteButton) => {
+  mestoDeleteButton.addEventListener('click', event => {
+    event.target.closest('.mesto').remove();
   });
 }
 
-function initLikeMesto(mestoLikeButton){
+const initLikeMesto = (mestoLikeButton) => {
   mestoLikeButton.addEventListener('click', event => {
     event.target.classList.toggle('mesto__like_liked');
-  });  
+  });
 }
 
-function initOpenPopupImg(mestoImg, name, link){
+const initOpenPopupImg = (mestoImg, name, link) => {
   mestoImg.addEventListener('click', event => {
     event.preventDefault();
     openImage(name, link);
   });
 }
 
-function createCard(elem, name, link) {
+const createCard = (elem, name, link) => {
   const mestoLike = elem.querySelector('.mesto__like');
   const mestoDelete = elem.querySelector('.mesto__delete');
   const mestoImage = elem.querySelector('.mesto__image');
   const mestoTitle = elem.querySelector('.mesto__title');
 
-    mestoImage.src = link;
-    mestoImage.alt = name;
-    mestoTitle.textContent = name;
+  mestoImage.src = link;
+  mestoImage.alt = name;
+  mestoTitle.textContent = name;
 
-    // Like
-    initLikeMesto(mestoLike);
+  // Like
+  initLikeMesto(mestoLike);
 
-    // Удаление элемента
-    initDelMesto(mestoDelete);
+  // Удаление элемента
+  initDelMesto(mestoDelete);
 
-    // popup картинки
-    initOpenPopupImg(mestoImage, name, link);
+  // popup картинки
+  initOpenPopupImg(mestoImage, name, link);
 }
 
-function renderCard(name, link) {
+const renderCard = (name, link) => {
   const mestoElement = mestoTemplate.cloneNode(true);
   createCard(mestoElement, name, link);
-  elementsList.prepend(mestoElement); 
+  elementsList.prepend(mestoElement);
 }
 
-function closeOnEsc(evt) {
+const disableSubmitInput = (objValidaton) => {
+  const inputList = document.querySelectorAll(objValidaton.inputSelector);
+  inputList.forEach(input => {
+    input.classList.remove(objValidaton.inputErrorClass);
+    input.nextElementSibling.textContent = '';
+  });
+}
+
+const disableSubmitButton = (objValidation) => {
+  const buttonSubmint = document.querySelectorAll(objValidation.submitButtonSelector);
+
+  buttonSubmint.forEach((button) => {
+    button.classList.add(objValidation.inactiveButtonClass);
+    button.setAttribute('disabled', '');
+  });
+}
+
+const resetValidationStyle = (objValidation) => {
+  disableSubmitInput(objValidation);
+  disableSubmitButton(objValidation);
+};
+
+// Закрытие при нажатии на ESC
+const closeOnEsc = (evt) => {
   if (evt.keyCode === ESC_CODE) {
     const popupClose = document.querySelector('.popup_opened');
     closePopup(popupClose);
-  }
+  };
 }
 
-initialCards.forEach( item => {
-    renderCard(item.name, item.link);
-});
+// Закрытие при нажатии на Overlay
+closePopupOverlay.forEach(item => {
+  item.addEventListener('click', evt => {
+    if (evt.target === evt.currentTarget) {
+      closePopup(evt.target.closest('.popup'));
+    };
+  });
+})
+
+initialCards.forEach(item => {
+  renderCard(item.name, item.link);
+})
 
 popupEdit.addEventListener('keydown', closeOnEsc);
 formElementEdit.addEventListener('submit', handleSubmitEdit);
 formElementAdd.addEventListener('submit', handleSubmitAdd);
 editButton.addEventListener('click', openEdit);
-addButton.addEventListener('click',openAdd)
-closeButtonEdit.addEventListener('click', closeEdit); 
+addButton.addEventListener('click', openAdd)
+closeButtonEdit.addEventListener('click', closeEdit);
 closeButtonAdd.addEventListener('click', closeAdd);
 closeButtonImage.addEventListener('click', closeImage);
 
-closePopupOverlay.forEach(item => {
-  item.addEventListener('click', evt => {
-    if (evt.target === evt.currentTarget) {
-      closePopup(evt.target.closest('.popup'));
-    }
-  })
-})
+
