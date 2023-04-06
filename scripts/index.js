@@ -75,12 +75,15 @@ const handleSubmitEdit = (evt) => {
   evt.preventDefault();
   nameProfile.textContent = nameInput.value;
   jobProfile.textContent = jobInput.value;
-  closeEdit();
+  closePopup(popupEdit);
 }
 
 const handleSubmitAdd = (evt) => {
   evt.preventDefault();
-  renderCard(newMesto.value, newLink.value);
+  renderCard({
+    name: newMesto.value,
+    link: newLink.value},
+    elementsList);
   closeAdd();
 }
 
@@ -103,15 +106,16 @@ const initOpenPopupImg = (mestoImg, name, link) => {
   });
 }
 
-const createCard = (elem, name, link) => {
-  const mestoLike = elem.querySelector('.mesto__like');
-  const mestoDelete = elem.querySelector('.mesto__delete');
-  const mestoImage = elem.querySelector('.mesto__image');
-  const mestoTitle = elem.querySelector('.mesto__title');
+const createCard = (tamplate) => {
+  const mestoElement = mestoTemplate.cloneNode(true);
+  const mestoLike = mestoElement.querySelector('.mesto__like');
+  const mestoDelete = mestoElement.querySelector('.mesto__delete');
+  const mestoImage = mestoElement.querySelector('.mesto__image');
+  const mestoTitle = mestoElement.querySelector('.mesto__title');
 
-  mestoImage.src = link;
-  mestoImage.alt = name;
-  mestoTitle.textContent = name;
+  mestoImage.src = tamplate.link;
+  mestoImage.alt = tamplate.name;
+  mestoTitle.textContent = tamplate.name;
 
   // Like
   initLikeMesto(mestoLike);
@@ -120,13 +124,13 @@ const createCard = (elem, name, link) => {
   initDelMesto(mestoDelete);
 
   // popup картинки
-  initOpenPopupImg(mestoImage, name, link);
+  initOpenPopupImg(mestoImage, tamplate.name, tamplate.link);
+
+  return mestoElement;
 }
 
-const renderCard = (name, link) => {
-  const mestoElement = mestoTemplate.cloneNode(true);
-  createCard(mestoElement, name, link);
-  elementsList.prepend(mestoElement);
+const renderCard = (card, container) => {
+  container.prepend(createCard(card));
 }
 
 const disableSubmitInput = (objValidaton) => {
@@ -139,7 +143,6 @@ const disableSubmitInput = (objValidaton) => {
 
 const disableSubmitButton = (objValidation) => {
   const buttonSubmint = document.querySelectorAll(objValidation.submitButtonSelector);
-
   buttonSubmint.forEach((button) => {
     button.classList.add(objValidation.inactiveButtonClass);
     button.setAttribute('disabled', '');
@@ -168,8 +171,8 @@ closePopupOverlay.forEach(item => {
   });
 })
 
-initialCards.forEach(item => {
-  renderCard(item.name, item.link);
+initialCards.forEach(card => {
+  renderCard(card, elementsList);
 })
 
 popupEdit.addEventListener('keydown', closeOnEsc);
