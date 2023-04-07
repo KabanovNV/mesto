@@ -1,9 +1,9 @@
 export {initialCards,
-  editButton,
-  addButton,
-  closeButtonEdit,
-  closeButtonAdd,
-  closeButtonImage,
+  profileEditButton,
+  profileAddButon,
+  popupButtonEditClose,
+  popupButtonAddClose,
+  popupButtonImageClose,
   popupEdit,
   popupAdd,
   popupImage,
@@ -18,8 +18,8 @@ export {initialCards,
   newMesto,
   newLink,
   ESC_CODE,
-  enableValidation,
-  closePopupOverlay,
+  validationConfig,
+  popupOverlay,
 }
 
 const initialCards = [
@@ -50,11 +50,11 @@ const initialCards = [
   ]; 
 
 const container = document.querySelector('.container');
-const editButton = container.querySelector('.profile__edit-button');
-const addButton = container.querySelector('.profile__add-button');
-const closeButtonEdit = container.querySelector('.popup__close-button_edit');
-const closeButtonAdd = container.querySelector('.popup__close-button_add');
-const closeButtonImage = container.querySelector('.popup__close-button_image');
+const profileEditButton = container.querySelector('.profile__edit-button');
+const profileAddButon = container.querySelector('.profile__add-button');
+const popupButtonEditClose = container.querySelector('.popup__close-button_edit');
+const popupButtonAddClose = container.querySelector('.popup__close-button_add');
+const popupButtonImageClose = container.querySelector('.popup__close-button_image');
 const popupEdit = container.querySelector('.popup_edit');
 const popupAdd = container.querySelector('.popup_add');
 const popupImage = container.querySelector('.popup_image-section');
@@ -68,11 +68,11 @@ const jobInput = container.querySelector('.popup__input-about');
 const jobProfile = container.querySelector('.profile__user-caption');
 const newMesto = container.querySelector('.popup__input-new-mesto'); 
 const newLink = container.querySelector('.popup__input-new-link');
-const closePopupOverlay = document.querySelectorAll('.popup');
+const popupOverlay = document.querySelectorAll('.popup');
 
 const ESC_CODE = 27;
 
-const enableValidation = {
+const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__submit-button',
@@ -80,4 +80,3 @@ const enableValidation = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible'
 }
-// formValidationConfig

@@ -1,10 +1,10 @@
 import {
   initialCards,
-  editButton,
-  addButton,
-  closeButtonEdit,
-  closeButtonAdd,
-  closeButtonImage,
+  profileEditButton,
+  profileAddButon,
+  popupButtonEditClose,
+  popupButtonAddClose,
+  popupButtonImageClose,
   popupEdit,
   popupAdd,
   popupImage,
@@ -19,8 +19,8 @@ import {
   newMesto,
   newLink,
   ESC_CODE,
-  enableValidation,
-  closePopupOverlay
+  validationConfig as config,
+  popupOverlay
 } from './constants.js';
 
 const openPopup = popup => {
@@ -34,7 +34,7 @@ const closePopup = popup => {
 }
 
 const openEdit = () => {
-  resetValidationStyle(enableValidation);
+  resetValidationStyle(popupEdit);
   openPopup(popupEdit);
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
@@ -42,7 +42,7 @@ const openEdit = () => {
 
 
 const openAdd = () => {
-  resetValidationStyle(enableValidation);
+  resetValidationStyle(popupAdd);
   openPopup(popupAdd);
 }
 
@@ -133,25 +133,25 @@ const renderCard = (card, container) => {
   container.prepend(createCard(card));
 }
 
-const disableSubmitInput = (objValidaton) => {
-  const inputList = document.querySelectorAll(objValidaton.inputSelector);
+const disableSubmitInput = (popupForm) => {
+  const inputList = popupForm.querySelectorAll(config.inputSelector);
   inputList.forEach(input => {
-    input.classList.remove(objValidaton.inputErrorClass);
+    input.classList.remove(config.inputErrorClass);
     input.nextElementSibling.textContent = '';
   });
 }
 
-const disableSubmitButton = (objValidation) => {
-  const buttonSubmint = document.querySelectorAll(objValidation.submitButtonSelector);
+const disableSubmitButton = (popupForm) => {
+  const buttonSubmint = popupForm.querySelectorAll(config.submitButtonSelector);
   buttonSubmint.forEach((button) => {
-    button.classList.add(objValidation.inactiveButtonClass);
+    button.classList.add(config.inactiveButtonClass);
     button.setAttribute('disabled', '');
   });
 }
 
-const resetValidationStyle = (objValidation) => {
-  disableSubmitInput(objValidation);
-  disableSubmitButton(objValidation);
+const resetValidationStyle = (popupForm) => {
+  disableSubmitInput(popupForm);
+  disableSubmitButton(popupForm);
 };
 
 // Закрытие при нажатии на ESC
@@ -163,8 +163,8 @@ const closeOnEsc = (evt) => {
 }
 
 // Закрытие при нажатии на Overlay
-closePopupOverlay.forEach(item => {
-  item.addEventListener('click', evt => {
+popupOverlay.forEach(item => {
+  item.addEventListener('mousedown', evt => {
     if (evt.target === evt.currentTarget) {
       closePopup(evt.target.closest('.popup'));
     };
@@ -178,10 +178,10 @@ initialCards.forEach(card => {
 popupEdit.addEventListener('keydown', closeOnEsc);
 formElementEdit.addEventListener('submit', handleSubmitEdit);
 formElementAdd.addEventListener('submit', handleSubmitAdd);
-editButton.addEventListener('click', openEdit);
-addButton.addEventListener('click', openAdd)
-closeButtonEdit.addEventListener('click', closeEdit);
-closeButtonAdd.addEventListener('click', closeAdd);
-closeButtonImage.addEventListener('click', closeImage);
+profileEditButton.addEventListener('click', openEdit);
+profileAddButon.addEventListener('click', openAdd)
+popupButtonEditClose.addEventListener('click', closeEdit);
+popupButtonAddClose.addEventListener('click', closeAdd);
+popupButtonImageClose.addEventListener('click', closeImage);
 
 
