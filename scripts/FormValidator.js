@@ -10,28 +10,28 @@ class FormValidator {
         this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
         this._saveButton = this._form.querySelector(this._submitButtonSelector);
     }
-// Добавить ошибку
+
     _showInputError (inputElement, errorMessage) {
         const errorElement = this._form.querySelector(`.${inputElement.id}-error`);
         inputElement.classList.add(this._inputErrorClass);
         errorElement.textContent = errorMessage;
         errorElement.classList.add(this._errorClass);    
     }
-// Снять ошибку
+
     _hideInputError (inputElement) {
         const errorElement = this._form.querySelector(`.${inputElement.id}-error`); 
         inputElement.classList.remove(this._inputErrorClass);
         errorElement.classList.remove(this._errorClass);
         errorElement.textContent = '';
     };
-//Валидация формы. Публичный метод.
+
     enableValidation () {
         this._form.addEventListener('submit', evt => {
             evt.preventDefault();
         });
         this._setEventListeners();
     }
-// Слушатель инпутов
+
     _setEventListeners() {
         this._toggleButtonState();
         this._inputList.forEach((inputElement) => {
@@ -41,7 +41,7 @@ class FormValidator {
             })
         })    
     }
-// Переключение кнопки Submit
+
     _toggleButtonState() {
         if (this._hasInvalidInput()) {
             this._saveButton.disabled = true;
