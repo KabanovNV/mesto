@@ -11,7 +11,6 @@ import {
   formElementAdd,
   formElementEdit,
   elementsList,
-  mestoTemplate,
   nameInput,
   nameProfile,
   jobInput,
@@ -22,6 +21,9 @@ import {
   validationConfig as config,
   popupOverlay
 } from './constants.js';
+
+import { Card } from './Card.js';
+import { FormValidator } from './FormValidator.js';
 
 const openPopup = popup => {
   popup.classList.add('popup_opened');
@@ -48,6 +50,7 @@ const openAdd = () => {
 
 
 const openImage = (name, link) => {
+  console.log(link)
   popupImage.querySelector('.popup__image').src = link;
   popupImage.querySelector('.popup__image').alt = name;
   popupImage.querySelector('.popup__image-caption').textContent = name;
@@ -87,46 +90,9 @@ const handleSubmitAdd = (evt) => {
   closeAdd();
 }
 
-const initDelMesto = (mestoDeleteButton) => {
-  mestoDeleteButton.addEventListener('click', event => {
-    event.target.closest('.mesto').remove();
-  });
-}
-
-const initLikeMesto = (mestoLikeButton) => {
-  mestoLikeButton.addEventListener('click', event => {
-    event.target.classList.toggle('mesto__like_liked');
-  });
-}
-
-const initOpenPopupImg = (mestoImg, name, link) => {
-  mestoImg.addEventListener('click', event => {
-    event.preventDefault();
-    openImage(name, link);
-  });
-}
-
-const createCard = (tamplate) => {
-  const mestoElement = mestoTemplate.cloneNode(true);
-  const mestoLike = mestoElement.querySelector('.mesto__like');
-  const mestoDelete = mestoElement.querySelector('.mesto__delete');
-  const mestoImage = mestoElement.querySelector('.mesto__image');
-  const mestoTitle = mestoElement.querySelector('.mesto__title');
-
-  mestoImage.src = tamplate.link;
-  mestoImage.alt = tamplate.name;
-  mestoTitle.textContent = tamplate.name;
-
-  // Like
-  initLikeMesto(mestoLike);
-
-  // Удаление элемента
-  initDelMesto(mestoDelete);
-
-  // popup картинки
-  initOpenPopupImg(mestoImage, tamplate.name, tamplate.link);
-
-  return mestoElement;
+const createCard = (cardData) => {
+  const card = new Card (cardData, '.mesto-template', openImage);
+  return card.generateCard();
 }
 
 const renderCard = (card, container) => {
@@ -184,4 +150,10 @@ popupButtonEditClose.addEventListener('click', closeEdit);
 popupButtonAddClose.addEventListener('click', closeAdd);
 popupButtonImageClose.addEventListener('click', closeImage);
 
+// Валидация форм
+const validationFormProfile = new FormValidator(config, formElementEdit);
+validationFormProfile.enableValidation();
+
+const validationFormAdd = new FormValidator(config, formElementAdd);
+validationFormAdd.enableValidation();
 
