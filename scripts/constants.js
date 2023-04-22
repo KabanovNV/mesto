@@ -1,6 +1,7 @@
-export {initialCards,
+export {
+  initialCards,
   profileEditButton,
-  profileAddButon,
+  profileAddButton,
   popupButtonEditClose,
   popupButtonAddClose,
   popupButtonImageClose,
@@ -9,66 +10,71 @@ export {initialCards,
   popupImage,
   formElementAdd,
   formElementEdit,
-  elementsList,
-  mestoTemplate,
+  cardsContainer,
   nameInput,
   nameProfile,
   jobInput,
   jobProfile,
-  newMesto,
+  newPlace,
   newLink,
   ESC_CODE,
   validationConfig,
-  popupOverlay,
+  popupOverlayList,
+  popupImageAlt,
+  popupImageSrc,
+  popupImageTxtContent
 }
 
 const initialCards = [
-    {
-      name: 'Алтай',
-      link: './images/Altay.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: './images/baikal.jpg'
-    },
-    {
-      name: 'Карачаево-Черкесия',
-      link: './images/karachaevo-cherkesya.jpg'
-    },
-    {
-      name: 'Карелия',
-      link: './images/Kareliya.jpg'
-    },
-    {
-      name: 'Архыз',
-      link: './images/Arkhyz.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: './images/Kamchatka.jpg'
-    }
-  ]; 
+  {
+    name: 'Алтай',
+    link: './images/Altay.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: './images/baikal.jpg'
+  },
+  {
+    name: 'Карачаево-Черкесия',
+    link: './images/karachaevo-cherkesya.jpg'
+  },
+  {
+    name: 'Карелия',
+    link: './images/Kareliya.jpg'
+  },
+  {
+    name: 'Архыз',
+    link: './images/Arkhyz.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: './images/Kamchatka.jpg'
+  }
+];
 
 const container = document.querySelector('.container');
 const profileEditButton = container.querySelector('.profile__edit-button');
-const profileAddButon = container.querySelector('.profile__add-button');
+const profileAddButton = container.querySelector('.profile__add-button');
 const popupButtonEditClose = container.querySelector('.popup__close-button_edit');
 const popupButtonAddClose = container.querySelector('.popup__close-button_add');
 const popupButtonImageClose = container.querySelector('.popup__close-button_image');
 const popupEdit = container.querySelector('.popup_edit');
 const popupAdd = container.querySelector('.popup_add');
 const popupImage = container.querySelector('.popup_image-section');
-const formElementAdd = container.querySelector('.popup__form-add'); 
-const formElementEdit = container.querySelector('.popup__form-edit'); 
-const elementsList = document.querySelector('.elements');
-const mestoTemplate = document.querySelector('.mesto-template').content;
+const formElementAdd = container.querySelector('.popup__form-add');
+const formElementEdit = container.querySelector('.popup__form-edit');
+const cardsContainer = document.querySelector('.elements');
 const nameInput = container.querySelector('.popup__input-name');
-const nameProfile = container.querySelector('.profile__user-name'); 
-const jobInput = container.querySelector('.popup__input-about'); 
+const nameProfile = container.querySelector('.profile__user-name');
+const jobInput = container.querySelector('.popup__input-about');
 const jobProfile = container.querySelector('.profile__user-caption');
-const newMesto = container.querySelector('.popup__input-new-mesto'); 
+const newPlace = container.querySelector('.popup__input-new-mesto');
 const newLink = container.querySelector('.popup__input-new-link');
-const popupOverlay = document.querySelectorAll('.popup');
+const popupOverlayList = document.querySelectorAll('.popup');
+const popupImageSrc = popupImage.querySelector('.popup__image').src;
+const popupImageAlt = popupImage.querySelector('.popup__image').alt;
+const popupImageTxtContent = popupImage.querySelector('.popup__image-caption').textContent;
+
 
 const ESC_CODE = 27;
 

@@ -1,58 +1,58 @@
 class Card {
-    constructor(cardData, tamplateSelector, openImage){
+    constructor(cardData, templateSelector, handleImageClick) {
         this._name = cardData.name;
         this._link = cardData.link;
-        this._tamplateSelector = tamplateSelector;
-        this._openImage = openImage;
+        this._templateSelector = templateSelector;
+        this._handleImageClick = handleImageClick;
     }
-// Получаем шаблон
+    // Получаем шаблон
     _getElement() {
-        const mestoElement = document
-            .querySelector(this._tamplateSelector)
+        const card = document
+            .querySelector(this._templateSelector)
             .content
             .querySelector('.mesto')
             .cloneNode(true);
 
-        return  mestoElement;
+        return card;
     }
-   
-// Генерим карточку
-    generateCard() {
-        this._mestoElement = this._getElement();
-        this._mestoLike = this._mestoElement.querySelector('.mesto__like');
-        this._mestoDelete = this._mestoElement.querySelector('.mesto__delete');
-        this._mestoImage = this._mestoElement.querySelector('.mesto__image');
-        this._mestoTitle = this._mestoElement.querySelector('.mesto__title');
 
-        this._mestoImage.alt = this._name;
-        this._mestoImage.src = this._link;
-        this._mestoTitle.textContent = this._name;
+    // Генерим карточку
+    generateCard() {
+        this._element = this._getElement();
+        this._like = this._element.querySelector('.mesto__like');
+        this._delete = this._element.querySelector('.mesto__delete');
+        this._image = this._element.querySelector('.mesto__image');
+        this._title = this._element.querySelector('.mesto__title');
+
+        this._image.alt = this._name;
+        this._image.src = this._link;
+        this._title.textContent = this._name;
 
         this._setEventListeners();
 
-        return this._mestoElement;
+        return this._element;
     }
-// Лайк/дизлайк
+    // Лайк/дизлайк
     _likeCard() {
-        this._mestoLike.classList.toggle('mesto__like_liked');    
+        this._like.classList.toggle('mesto__like_liked');
     }
-// Удаление карточки
+    // Удаление карточки
     _deleteCard() {
-        this._mestoElement.remove();
-        this._cardElement = null;
+        this._element.remove();
+        this._element = null;
     }
-// Слушатели
+    // Слушатели
     _setEventListeners() {
-        this._mestoLike.addEventListener('click', () => {
+        this._like.addEventListener('click', () => {
             this._likeCard();
-        })    
-        this._mestoDelete.addEventListener('click', () => {
+        })
+        this._delete.addEventListener('click', () => {
             this._deleteCard();
         })
-        this._mestoImage.addEventListener('click', () => {
-            this._openImage(this._name,this._link)
+        this._image.addEventListener('click', () => {
+            this._handleImageClick(this._name, this._link)
         })
-        
+
     }
 
 }

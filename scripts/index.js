@@ -1,7 +1,7 @@
 import {
   initialCards,
   profileEditButton,
-  profileAddButon,
+  profileAddButton,
   popupButtonEditClose,
   popupButtonAddClose,
   popupButtonImageClose,
@@ -10,33 +10,39 @@ import {
   popupImage,
   formElementAdd,
   formElementEdit,
-  elementsList,
+  cardsContainer,
   nameInput,
   nameProfile,
   jobInput,
   jobProfile,
-  newMesto,
+  newPlace,
   newLink,
   ESC_CODE,
   validationConfig as config,
-  popupOverlay
+  popupOverlayList,
+  popupImageAlt,
+  popupImageSrc,
+  popupImageTxtContent,
 } from './constants.js';
 
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
 
+const validationFormProfile = new FormValidator(config, formElementEdit);
+const validationFormAdd = new FormValidator(config, formElementAdd);
+
 const openPopup = popup => {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', closeOnEsc);
+  popup.addEventListener('keydown', closeOnEsc);
 }
 
 const closePopup = popup => {
   popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closeOnEsc);
+  popup.removeEventListener('keydown', closeOnEsc);
 }
 
 const openEdit = () => {
-  resetValidationStyle(popupEdit);
+  validationFormProfile.resetValidation();
   openPopup(popupEdit);
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
@@ -44,16 +50,15 @@ const openEdit = () => {
 
 
 const openAdd = () => {
-  resetValidationStyle(popupAdd);
+  validationFormAdd.resetValidation();
   openPopup(popupAdd);
 }
 
 
 const openImage = (name, link) => {
-  console.log(link)
-  popupImage.querySelector('.popup__image').src = link;
-  popupImage.querySelector('.popup__image').alt = name;
-  popupImage.querySelector('.popup__image-caption').textContent = name;
+  popupImageSrc = link;
+  popupImageAlt = name;
+  popupImageTxtContent = name;
   openPopup(popupImage);
 }
 
@@ -84,14 +89,15 @@ const handleSubmitEdit = (evt) => {
 const handleSubmitAdd = (evt) => {
   evt.preventDefault();
   renderCard({
-    name: newMesto.value,
-    link: newLink.value},
+    name: newPlace.value,
+    link: newLink.value
+  },
     elementsList);
   closeAdd();
 }
 
 const createCard = (cardData) => {
-  const card = new Card (cardData, '.mesto-template', openImage);
+  const card = new Card(cardData, '.mesto-template', openImage);
   return card.generateCard();
 }
 
@@ -99,37 +105,16 @@ const renderCard = (card, container) => {
   container.prepend(createCard(card));
 }
 
-const disableSubmitInput = (popupForm) => {
-  const inputList = popupForm.querySelectorAll(config.inputSelector);
-  inputList.forEach(input => {
-    input.classList.remove(config.inputErrorClass);
-    input.nextElementSibling.textContent = '';
-  });
-}
-
-const disableSubmitButton = (popupForm) => {
-  const buttonSubmint = popupForm.querySelectorAll(config.submitButtonSelector);
-  buttonSubmint.forEach((button) => {
-    button.classList.add(config.inactiveButtonClass);
-    button.setAttribute('disabled', '');
-  });
-}
-
-const resetValidationStyle = (popupForm) => {
-  disableSubmitInput(popupForm);
-  disableSubmitButton(popupForm);
-};
-
 // Закрытие при нажатии на ESC
 const closeOnEsc = (evt) => {
-  if (evt.keyCode === ESC_CODE) {
+  if (evt.key === ESC_CODE) {
     const popupClose = document.querySelector('.popup_opened');
     closePopup(popupClose);
   };
 }
 
 // Закрытие при нажатии на Overlay
-popupOverlay.forEach(item => {
+popupOverlayList.forEach(item => {
   item.addEventListener('mousedown', evt => {
     if (evt.target === evt.currentTarget) {
       closePopup(evt.target.closest('.popup'));
@@ -138,22 +123,18 @@ popupOverlay.forEach(item => {
 })
 
 initialCards.forEach(card => {
-  renderCard(card, elementsList);
+  renderCard(card, cardsContainer);
 })
 
-popupEdit.addEventListener('keydown', closeOnEsc);
 formElementEdit.addEventListener('submit', handleSubmitEdit);
 formElementAdd.addEventListener('submit', handleSubmitAdd);
 profileEditButton.addEventListener('click', openEdit);
-profileAddButon.addEventListener('click', openAdd)
+profileAddButton.addEventListener('click', openAdd)
 popupButtonEditClose.addEventListener('click', closeEdit);
 popupButtonAddClose.addEventListener('click', closeAdd);
 popupButtonImageClose.addEventListener('click', closeImage);
 
 // Валидация форм
-const validationFormProfile = new FormValidator(config, formElementEdit);
 validationFormProfile.enableValidation();
-
-const validationFormAdd = new FormValidator(config, formElementAdd);
 validationFormAdd.enableValidation();
 
