@@ -19,26 +19,25 @@ import {
   newLink,
   ESC_CODE,
   validationConfig as config,
-  popupOverlayList,
-  popupImageAlt,
-  popupImageSrc,
-  popupImageTxtContent,
+  popupOverlayList
 } from './constants.js';
 
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
 
+let elementImage = popupImage.querySelector('.popup__image');
+let elementImageCaption = popupImage.querySelector('.popup__image-caption');
 const validationFormProfile = new FormValidator(config, formElementEdit);
 const validationFormAdd = new FormValidator(config, formElementAdd);
 
 const openPopup = popup => {
   popup.classList.add('popup_opened');
-  popup.addEventListener('keydown', closeOnEsc);
+  document.addEventListener('keydown', closeOnEsc);
 }
 
 const closePopup = popup => {
   popup.classList.remove('popup_opened');
-  popup.removeEventListener('keydown', closeOnEsc);
+  document.removeEventListener('keydown', closeOnEsc);
 }
 
 const openEdit = () => {
@@ -56,9 +55,9 @@ const openAdd = () => {
 
 
 const openImage = (name, link) => {
-  popupImageSrc = link;
-  popupImageAlt = name;
-  popupImageTxtContent = name;
+  elementImage.src = link;
+  elementImage.alt = name;
+  elementImageCaption.textContent = name;
   openPopup(popupImage);
 }
 
@@ -92,7 +91,7 @@ const handleSubmitAdd = (evt) => {
     name: newPlace.value,
     link: newLink.value
   },
-    elementsList);
+    cardsContainer);
   closeAdd();
 }
 
@@ -107,6 +106,7 @@ const renderCard = (card, container) => {
 
 // Закрытие при нажатии на ESC
 const closeOnEsc = (evt) => {
+  console.log(evt)
   if (evt.key === ESC_CODE) {
     const popupClose = document.querySelector('.popup_opened');
     closePopup(popupClose);
