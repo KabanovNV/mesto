@@ -20,6 +20,8 @@ export {
   ESC_CODE,
   validationConfig,
   popupOverlayList,
+  elementImage,
+  elementImageCaption,
 }
 
 const initialCards = [
@@ -68,6 +70,8 @@ const jobProfile = container.querySelector('.profile__user-caption');
 const newPlace = container.querySelector('.popup__input-new-mesto');
 const newLink = container.querySelector('.popup__input-new-link');
 const popupOverlayList = document.querySelectorAll('.popup');
+const elementImage = popupImage.querySelector('.popup__image');
+const elementImageCaption = popupImage.querySelector('.popup__image-caption');
 
 const ESC_CODE = 'Escape';
 

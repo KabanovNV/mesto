@@ -18,38 +18,38 @@ class Card {
 
     // Генерим карточку
     generateCard() {
-        this._element = this._getElement();
-        this._like = this._element.querySelector('.mesto__like');
-        this._delete = this._element.querySelector('.mesto__delete');
-        this._image = this._element.querySelector('.mesto__image');
-        this._title = this._element.querySelector('.mesto__title');
+        this._cardElement = this._getElement();
+        this._cardElementLike = this._cardElement.querySelector('.mesto__like');
+        this._cardElementDelete = this._cardElement.querySelector('.mesto__delete');
+        this._cardElementImage = this._cardElement.querySelector('.mesto__image');
+        this._cardElementTitle = this._cardElement.querySelector('.mesto__title');
 
-        this._image.alt = this._name;
-        this._image.src = this._link;
-        this._title.textContent = this._name;
+        this._cardElementImage.alt = this._name;
+        this._cardElementImage.src = this._link;
+        this._cardElementTitle.textContent = this._name;
 
         this._setEventListeners();
 
-        return this._element;
+        return this._cardElement;
     }
     // Лайк/дизлайк
     _likeCard() {
-        this._like.classList.toggle('mesto__like_liked');
+        this._cardElementLike.classList.toggle('mesto__like_liked');
     }
     // Удаление карточки
     _deleteCard() {
-        this._element.remove();
-        this._element = null;
+        this._cardElement.remove();
+        this._cardElement = null;
     }
     // Слушатели
     _setEventListeners() {
-        this._like.addEventListener('click', () => {
+        this._cardElementLike.addEventListener('click', () => {
             this._likeCard();
         })
-        this._delete.addEventListener('click', () => {
+        this._cardElementDelete.addEventListener('click', () => {
             this._deleteCard();
         })
-        this._image.addEventListener('click', () => {
+        this._cardElementImage.addEventListener('click', () => {
             this._handleImageClick(this._name, this._link)
         })
 

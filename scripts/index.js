@@ -19,14 +19,14 @@ import {
   newLink,
   ESC_CODE,
   validationConfig as config,
-  popupOverlayList
+  popupOverlayList,
+  elementImage,
+  elementImageCaption,
 } from './constants.js';
 
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
 
-let elementImage = popupImage.querySelector('.popup__image');
-let elementImageCaption = popupImage.querySelector('.popup__image-caption');
 const validationFormProfile = new FormValidator(config, formElementEdit);
 const validationFormAdd = new FormValidator(config, formElementAdd);
 
@@ -106,7 +106,6 @@ const renderCard = (card, container) => {
 
 // Закрытие при нажатии на ESC
 const closeOnEsc = (evt) => {
-  console.log(evt)
   if (evt.key === ESC_CODE) {
     const popupClose = document.querySelector('.popup_opened');
     closePopup(popupClose);
