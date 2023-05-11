@@ -10,30 +10,37 @@ export {
   validationConfig,
 }
 
+const altayImage = new URL ('../images/Altay.jpg', import.meta.url);
+const baykalImage = new URL ('../images/baikal.jpg', import.meta.url);
+const kchrImage = new URL ('../images/karachaevo-cherkesya.jpg', import.meta.url);
+const kareliyaImage = new URL ('../images/Kareliya.jpg', import.meta.url);
+const arkhyzImage = new URL ('../images/Arkhyz.jpg', import.meta.url);
+const kamchatkaImage = new URL ('../images/Kamchatka.jpg', import.meta.url);
+
 const initialCards = [
   {
     name: 'Алтай',
-    link: './images/Altay.jpg'
+    link: altayImage
   },
   {
     name: 'Байкал',
-    link: './images/baikal.jpg'
+    link: baykalImage
   },
   {
     name: 'Карачаево-Черкесия',
-    link: './images/karachaevo-cherkesya.jpg'
+    link: kchrImage
   },
   {
     name: 'Карелия',
-    link: './images/Kareliya.jpg'
+    link: kareliyaImage
   },
   {
     name: 'Архыз',
-    link: './images/Arkhyz.jpg'
+    link: arkhyzImage
   },
   {
     name: 'Камчатка',
-    link: './images/Kamchatka.jpg'
+    link: kamchatkaImage
   }
 ];
 

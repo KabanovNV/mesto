@@ -1,3 +1,4 @@
+import './pages/index.css'
 import {
   initialCards,
   profileEditButton,
@@ -7,14 +8,14 @@ import {
   nameInput,
   aboutInput,
   validationConfig as config,
-} from './constants.js';
+} from './scripts/constants.js';
 
-import { Card } from './Card.js';
-import { FormValidator } from './FormValidator.js';
-import { Section } from './Section.js';
-import { UserInfo } from './UserInfo.js';
-import { PopupWithForm } from './PopupWithForm.js';
-import { PopupWithImage } from './PopupWithImage.js';
+import { Card } from './scripts/Card.js';
+import { FormValidator } from './scripts/FormValidator.js';
+import { Section } from './scripts/Section.js';
+import { UserInfo } from './scripts/UserInfo.js';
+import { PopupWithForm } from './scripts/PopupWithForm.js';
+import { PopupWithImage } from './scripts/PopupWithImage.js';
 
 // ---- Создание карточек на странице ----
 // Создание Popup  с изображением
