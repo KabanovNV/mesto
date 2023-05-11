@@ -48,5 +48,4 @@
 <img align="left" alt="JS" width="26px" src="https://github.com/KabanovNV/icons/blob/main/javascript_icon_48px.png" /><br>
 
 
-
 ##### Николай Кабанов
