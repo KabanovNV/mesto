@@ -20,6 +20,9 @@ $RECYCLE.BIN/
 .DS_Store
 .git
 .vscode
+node_modules
+dist
+
 
 # Windows Installer files
 *.cab

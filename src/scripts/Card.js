@@ -1,9 +1,9 @@
-class Card {
-    constructor(cardData, templateSelector, handleImageClick) {
+export class Card {
+    constructor(cardData, templateSelector, handleCardClick) {
         this._name = cardData.name;
         this._link = cardData.link;
         this._templateSelector = templateSelector;
-        this._handleImageClick = handleImageClick;
+        this._handleCardClick = handleCardClick;
     }
     // Получаем шаблон
     _getElement() {
@@ -23,24 +23,24 @@ class Card {
         this._cardElementDelete = this._cardElement.querySelector('.mesto__delete');
         this._cardElementImage = this._cardElement.querySelector('.mesto__image');
         this._cardElementTitle = this._cardElement.querySelector('.mesto__title');
-
         this._cardElementImage.alt = this._name;
         this._cardElementImage.src = this._link;
         this._cardElementTitle.textContent = this._name;
-
         this._setEventListeners();
-
         return this._cardElement;
-    }
+    };
+
     // Лайк/дизлайк
     _likeCard() {
         this._cardElementLike.classList.toggle('mesto__like_liked');
-    }
+    };
+
     // Удаление карточки
     _deleteCard() {
         this._cardElement.remove();
         this._cardElement = null;
-    }
+    };
+
     // Слушатели
     _setEventListeners() {
         this._cardElementLike.addEventListener('click', () => {
@@ -50,11 +50,9 @@ class Card {
             this._deleteCard();
         })
         this._cardElementImage.addEventListener('click', () => {
-            this._handleImageClick(this._name, this._link)
+            this._handleCardClick(this._name, this._link)
         })
 
-    }
+    };
 
 }
-
-export { Card };

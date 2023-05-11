@@ -2,26 +2,12 @@ export {
   initialCards,
   profileEditButton,
   profileAddButton,
-  popupButtonEditClose,
-  popupButtonAddClose,
-  popupButtonImageClose,
-  popupEdit,
-  popupAdd,
-  popupImage,
   formElementAdd,
   formElementEdit,
-  cardsContainer,
   nameInput,
-  nameProfile,
-  jobInput,
-  jobProfile,
-  newPlace,
-  newLink,
+  aboutInput,
   ESC_CODE,
   validationConfig,
-  popupOverlayList,
-  elementImage,
-  elementImageCaption,
 }
 
 const initialCards = [
@@ -54,25 +40,10 @@ const initialCards = [
 const container = document.querySelector('.container');
 const profileEditButton = container.querySelector('.profile__edit-button');
 const profileAddButton = container.querySelector('.profile__add-button');
-const popupButtonEditClose = container.querySelector('.popup__close-button_edit');
-const popupButtonAddClose = container.querySelector('.popup__close-button_add');
-const popupButtonImageClose = container.querySelector('.popup__close-button_image');
-const popupEdit = container.querySelector('.popup_edit');
-const popupAdd = container.querySelector('.popup_add');
-const popupImage = container.querySelector('.popup_image-section');
 const formElementAdd = container.querySelector('.popup__form-add');
 const formElementEdit = container.querySelector('.popup__form-edit');
-const cardsContainer = document.querySelector('.elements');
 const nameInput = container.querySelector('.popup__input-name');
-const nameProfile = container.querySelector('.profile__user-name');
-const jobInput = container.querySelector('.popup__input-about');
-const jobProfile = container.querySelector('.profile__user-caption');
-const newPlace = container.querySelector('.popup__input-new-mesto');
-const newLink = container.querySelector('.popup__input-new-link');
-const popupOverlayList = document.querySelectorAll('.popup');
-const elementImage = popupImage.querySelector('.popup__image');
-const elementImageCaption = popupImage.querySelector('.popup__image-caption');
-
+const aboutInput = container.querySelector('.popup__input-about');
 const ESC_CODE = 'Escape';
 
 const validationConfig = {
