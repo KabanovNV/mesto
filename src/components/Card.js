@@ -5,7 +5,7 @@ export class Card {
         this._templateSelector = templateSelector;
         this._handleCardClick = handleCardClick;
     }
-    // Получаем шаблон
+    /** Получаем шаблон */
     _getElement() {
         const card = document
             .querySelector(this._templateSelector)
@@ -16,7 +16,7 @@ export class Card {
         return card;
     }
 
-    // Генерим карточку
+    /** Генерим карточку */
     generateCard() {
         this._cardElement = this._getElement();
         this._cardElementLike = this._cardElement.querySelector('.mesto__like');
@@ -30,18 +30,18 @@ export class Card {
         return this._cardElement;
     };
 
-    // Лайк/дизлайк
+    /** Лайк/дизлайк */
     _likeCard() {
         this._cardElementLike.classList.toggle('mesto__like_liked');
     };
 
-    // Удаление карточки
+    /** Удаление карточки */
     _deleteCard() {
         this._cardElement.remove();
         this._cardElement = null;
     };
 
-    // Слушатели
+    /** Слушатели */
     _setEventListeners() {
         this._cardElementLike.addEventListener('click', () => {
             this._likeCard();
