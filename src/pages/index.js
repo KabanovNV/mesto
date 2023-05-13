@@ -44,8 +44,8 @@ cardsSection.renderItems(initialCards)
 /** ---- Popup редактирования профиля и добавления карточки ---- */
 /** Получение формы профиля */
 const userInfo = new UserInfo ({
-  name: '.profile__user-name', 
-  info: '.profile__user-caption'
+  nameSelector: '.profile__user-name', 
+  infoSelector: '.profile__user-caption'
 });
 
 /** Создание popup редактирования профиля */
