@@ -1,6 +1,6 @@
 .popup__form{
     max-width: 358px;
-    margin: 44px auto 37px;
+    margin: 0 auto 37px;
     display: flex;
     flex-direction: column;
 }

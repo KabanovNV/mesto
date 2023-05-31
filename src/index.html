@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="./pages/index.css"> -->
     <title>Mesto</title>
 </head>
 
@@ -16,9 +17,11 @@
         <main class="main">
 
             <section class="profile">
-                <img class="profile__avatar" src="<%=require('./images/kusto.jpg')%>" alt="Аватар">
+                <div class="profile__avatar">
+                    <img class="profile__image" src="" alt="Аватар">
+                </div>
                 <div class="profile__info">
-                    <h1 class="profile__user-name">Жак-Ив  Клод Кусто</h1>
+                    <h1 class="profile__user-name">Жак-Ив Кусто</h1>
                     <button class="profile__edit-button" type="button"></button>
                     <p class="profile__user-caption">Исследователь океана</p>
                 </div>
@@ -38,12 +41,12 @@
             <div class="popup__container">
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <form class="popup__form popup__form-edit" name="popupFormEdit" novalidate>
-                    <input class="popup__input popup__input-name" id="popup__input-name" type="text" placeholder="Имя" name="name" minlength="2"
-                        maxlength="40" required>
+                    <input class="popup__input popup__input-name" id="popup__input-name" type="text" placeholder="Имя"
+                        name="name" minlength="2" maxlength="40" required>
                     <span class="popup__error popup__input-name-error"></span>
-                    <input class="popup__input popup__input-about" id="popup__input-about" type="text" placeholder="О себе" name="about" minlength="2"
-                        maxlength="200" required>
-                    <span class="popup__error popup__input-about-error"></span>    
+                    <input class="popup__input popup__input-about" id="popup__input-about" type="text"
+                        placeholder="О себе" name="about" minlength="2" maxlength="200" required>
+                    <span class="popup__error popup__input-about-error"></span>
                     <button class="popup__submit-button" type="submit">Сохранить</button>
                 </form>
                 <button class="popup__close-button popup__close-button_edit" type="button"></button>
@@ -54,13 +57,38 @@
             <div class="popup__container">
                 <h2 class="popup__title">Новое место</h2>
                 <form class="popup__form popup__form-add" name="popupFormAdd" novalidate>
-                    <input class="popup__input popup__input-new-mesto" id="popup__input-new-mesto" type="text" placeholder="Название" name="name" minlength="2" maxlength="30" required>
+                    <input class="popup__input popup__input-new-mesto" id="popup__input-new-mesto" type="text"
+                        placeholder="Название" name="name" minlength="2" maxlength="30" required>
                     <span class="popup__error popup__input-new-mesto-error"></span>
-                    <input class="popup__input popup__input-new-link" id="popup__input-new-link" type="url" placeholder="Ссылка на картинку" name="link" required>
+                    <input class="popup__input popup__input-new-link" id="popup__input-new-link" type="url"
+                        placeholder="Ссылка на картинку" name="link" required>
                     <span class="popup__error popup__input-new-link-error"></span>
                     <button class="popup__submit-button" type="submit">Сохранить</button>
                 </form>
                 <button class="popup__close-button popup__close-button_add" type="button"></button>
+            </div>
+        </section>
+
+        <section class="popup popup_avatar">
+            <div class="popup__container">
+                <h2 class="popup__title">Обновить аватар</h2>
+                <form class="popup__form popup__form-avatar">
+                    <input class="popup__input popup__input-avatar" id="popup__input-avatar" type="url" name="avatar"
+                        required>
+                    <span class="popup__error popup__input-avatar-error"></span>
+                    <button class="popup__submit-button" type="submit">Сохранить</button>
+                </form>
+                <button class="popup__close-button popup__close-button_add" type="button"></button>
+            </div>
+        </section>
+
+        <section class="popup popup_confirmation">
+            <div class="popup__container">
+                <h2 class="popup__title">Вы уверены?</h2>
+                <form class="popup__form popup__form-confirmation">
+                    <button class="popup__submit-button" type="button">Да</button>
+                </form>
+                <button class="popup__close-button popup__close-button_confirm" type="button"></button>
             </div>
         </section>
 
@@ -80,7 +108,10 @@
             <img class="mesto__image" src="#" alt="#">
             <div class="mesto__info-container">
                 <h2 class="mesto__title"></h2>
-                <button class="mesto__like" type="button"></button>
+                <div class="mesto__like-conteiner">
+                    <button class="mesto__like" type="button"></button>
+                    <span class="mesto__like-counter">0</span>
+                </div>
             </div>
             <button class="mesto__delete" type="button"></button>
         </article>

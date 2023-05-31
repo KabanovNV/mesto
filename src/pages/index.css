@@ -13,6 +13,7 @@
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__image/profile__image.css);
 @import url(../blocks/profile/__user-caption/profile__user-caption.css);
 @import url(../blocks/profile/__user-name/profile__user-name.css);
 @import url(../blocks/profile/__edit-button/profile__edit-button.css);
@@ -24,6 +25,7 @@
 @import url(../blocks/mesto/__image/mesto__image.css);
 @import url(../blocks/mesto/__info-container/mesto__info-container.css);
 @import url(../blocks/mesto/__title/mesto__title.css);
+@import url(../blocks/mesto/__like-container/mesto__like-container.css);
 @import url(../blocks/mesto/__like/mesto__like.css);
 @import url(../blocks/mesto/__like/_liked/mesto__like_liked.css);
 @import url(../blocks/mesto/__delete/mesto__delete.css);

@@ -4,6 +4,7 @@ export default class Popup {
     constructor(popupSelector) {
         this._popup = document.querySelector(popupSelector);
         this._buttonClose = this._popup.querySelector('.popup__close-button');
+        this._buttonSubmit = this._popup.querySelector('.popup__submit-button');
     };
 
     /** Функция открытия popup */
@@ -30,6 +31,18 @@ export default class Popup {
         if (evt.target === evt.currentTarget) {
             this.close();
         };
+    };
+
+    /** Функция отображения Preloader */
+    renderPreloader(isLoading, displayText) {
+        if (!this._buttonSubmit) return
+        if (isLoading) {
+            this.defaultText = this._buttonSubmit.textContent;
+            this._buttonSubmit.textContent = displayText;
+        } else {
+            
+            this._buttonSubmit.textContent = this.defaultText;
+        }
     };
 
     /** Слушатели */

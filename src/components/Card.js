@@ -1,10 +1,13 @@
 export class Card {
-    constructor(cardData, templateSelector, handleCardClick) {
-        this._name = cardData.name;
-        this._link = cardData.link;
+    constructor({ cardData, myID, templateSelector, handleLikeClick, handleFormConfirm, handleCardClick }) {
+        this.cardData = cardData;
+        this._myID = myID;
         this._templateSelector = templateSelector;
         this._handleCardClick = handleCardClick;
-    }
+        this._handleLikeClick = handleLikeClick;
+        this._handleFormConfirm = handleFormConfirm
+    };
+
     /** Получаем шаблон */
     _getElement() {
         const card = document
@@ -14,7 +17,7 @@ export class Card {
             .cloneNode(true);
 
         return card;
-    }
+    };
 
     /** Генерим карточку */
     generateCard() {
@@ -23,20 +26,48 @@ export class Card {
         this._cardElementDelete = this._cardElement.querySelector('.mesto__delete');
         this._cardElementImage = this._cardElement.querySelector('.mesto__image');
         this._cardElementTitle = this._cardElement.querySelector('.mesto__title');
-        this._cardElementImage.alt = this._name;
-        this._cardElementImage.src = this._link;
-        this._cardElementTitle.textContent = this._name;
+        this._likeCounter = this._cardElement.querySelector('.mesto__like-counter');
+        this._cardElementImage.alt = this.cardData.name;
+        this._cardElementImage.src = this.cardData.link;
+        this._cardElementTitle.textContent = this.cardData.name;
+
+        // this._myLike = this.cardData.likes.some(like => like._id === this._myID)
+        if (this.likedCard()) { this._cardElementLike.classList.add('mesto__like_liked') }
+
+        this._likeCounter.textContent = this.cardData.likes.length;
+
+        /** Проверка пользователя для отображения корзины */
+        if (this._myID != this.cardData.owner._id) {
+            this._cardElementDelete.remove()
+        };
+
         this._setEventListeners();
+
         return this._cardElement;
     };
 
-    /** Лайк/дизлайк */
-    _likeCard() {
-        this._cardElementLike.classList.toggle('mesto__like_liked');
+    /** Обновление данных карточки */
+    updateData(newData) {
+        this.cardData = newData;
+    }
+
+    /** Обновление информации по лайкам */
+    updateLikes() {
+        this._likeCounter.textContent = this.cardData.likes.length;
+        if (!this.likedCard()) {
+            this._cardElementLike.classList.remove('mesto__like_liked');
+        } else {
+            this._cardElementLike.classList.add('mesto__like_liked');
+        }
+    };
+
+    /** Отслеживание моих лайков, в массиве лайков */
+    likedCard() {
+        return this.cardData.likes.some(like => like._id === this._myID)
     };
 
     /** Удаление карточки */
-    _deleteCard() {
+    deleteCard() {
         this._cardElement.remove();
         this._cardElement = null;
     };
@@ -44,13 +75,13 @@ export class Card {
     /** Слушатели */
     _setEventListeners() {
         this._cardElementLike.addEventListener('click', () => {
-            this._likeCard();
-        })
+            this._handleLikeClick(this.cardData)
+        });
         this._cardElementDelete.addEventListener('click', () => {
-            this._deleteCard();
-        })
+            this._handleFormConfirm(this.cardData, this)
+        });
         this._cardElementImage.addEventListener('click', () => {
-            this._handleCardClick(this._name, this._link)
+            this._handleCardClick(this._cardData.name, this._cardData.link)
         })
 
     };
