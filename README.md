@@ -9,6 +9,7 @@
 * [Ссылка на макет в Figma (Спринт 4)](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
 * [Ссылка на макет в Figma (Спринт 5)](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1)
 * [Ссылка на макет в Figma (Спринт 6)](https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6?node-id=0%3A1)
+* [Ссылка на макет в Figma (Спринт 9)](https://www.figma.com/file/PSdQFRHoxXJFs2FH8IXViF/JavaScript-9-sprint?node-id=0%3A1)
 
 ## Основной функционал
 
@@ -38,6 +39,19 @@
 - Созданы классы Section, Popup, PopupWithForm, PopupWithImage и UserInfo,
 - Настроена сборка Вебпаком.
 
+Спринт 9. Подключение к серверу.
+- Загрузка информации о пользователе с сервера,
+- Загрузка карточек с сервера,
+- Отредактированные данные профиля сохраняются на сервере,
+- Новые карточки сохраняются на сервере,
+- Отображение количества лайков карточки,
+- Добавлен попап удаления карточки,
+- Удаление карточек созданных пользователем,
+- Постановка и снятие лайка,
+- Обновление аватара пользователя с сохнанением на сервере,
+- Улучшен UX всех форм.
+
+
 
 ### Языки и инструменты
 
@@ -45,7 +59,8 @@
 <img align="left" alt="CSS3" width="26px" src="https://github.com/KabanovNV/icons/blob/main/css_icon_32px.png" />
 <img align="left" alt="Visual Studio Code" width="26px" src="https://github.com/KabanovNV/icons/blob/main/visualstudiocode_icon_32px.png" />
 <img align="left" alt="GitHub" width="26px" src="https://github.com/KabanovNV/icons/blob/main/github-50px.png" />
-<img align="left" alt="JS" width="26px" src="https://github.com/KabanovNV/icons/blob/main/javascript_icon_48px.png" /><br>
+<img align="left" alt="JS" width="26px" src="https://github.com/KabanovNV/icons/blob/main/javascript_icon_48px.png" />
+<img align="left" alt="webpack" width="28px" src="https://github.com/KabanovNV/icons/blob/main/webpack_icon_48px.png" /><br>
 
 
 ##### Николай Кабанов
