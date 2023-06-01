@@ -92,14 +92,17 @@ const userInfo = new UserInfo({
 /** Создание popup редактирования профиля */
 const popupProfile = new PopupWithForm('.popup_edit', {
   submitCallback: (data) => {
-    popupProfile.renderPreloader(true, "Сохранение...");
+    popupProfile.renderLoading(true, "Сохранение...");
     api.setUserInfoApi(data)
-      .then((res) => {
-        userInfo.setUserInfo(res)
+      .then((data) => {
+        userInfo.setUserInfo(data)
+      })
+      .then(() => {
+        popupProfile.close()
       })
       .catch((err) => alert(err))
       .finally(() => {
-        popupProfile.renderPreloader(false)
+        popupProfile.renderLoading(false)
       })
   }
 });
@@ -107,14 +110,17 @@ const popupProfile = new PopupWithForm('.popup_edit', {
 /** Создание popup редактирования аватвр */
 const popupAvatar = new PopupWithForm('.popup_avatar', {
   submitCallback: (data) => {
-    popupAvatar.renderPreloader(true, "Сохранение...");
+    popupAvatar.renderLoading(true, "Сохранение...");
     api.setUserAvatar(data)
       .then((res) => {
         userInfo.setUserAvatar(res);
       })
+      .then(() => {
+        popupAvatar.close()
+      })
       .catch((err) => alert(err))
       .finally(() => {
-        popupAvatar.renderPreloader(false)
+        popupAvatar.renderLoading(false)
       })
   }
 });
@@ -122,14 +128,17 @@ const popupAvatar = new PopupWithForm('.popup_avatar', {
 /** Создание popup добавления карточки */
 const popupAddCard = new PopupWithForm('.popup_add', {
   submitCallback: (data) => {
-    popupAddCard.renderPreloader(true, "Сохранение...");
+    popupAddCard.renderLoading(true, "Сохранение...");
     api.addNewCard(data)
       .then((res) => {
         cardsSection.addItem(createCard(res));
       })
+      .then(() => {
+        popupAddCard.close();
+      })
       .catch((err) => alert(err))
       .finally(() => {
-        popupAddCard.renderPreloader(false)
+        popupAddCard.renderLoading(false);
       })
   }
 });
@@ -137,14 +146,16 @@ const popupAddCard = new PopupWithForm('.popup_add', {
 /** Создание попап подтверждения удаления карточки */
 const popupDelCardConfirm = new PopupWithConfirmation('.popup_confirmation', {
   handleConfirmDelete: (cardId, cardElement) => {
-    popupDelCardConfirm.renderPreloader(true, "Удаление...");
+    popupDelCardConfirm.renderLoading(true, "Удаление...");
     api.deleteCard(cardId)
       .then(() => {
         cardElement.deleteCard();
+      })
+      .then(() => {
         popupDelCardConfirm.close();
       })
       .finally(() => {
-        popupDelCardConfirm.renderPreloader(false)
+        popupDelCardConfirm.renderLoading(false);
       })
   }
 });

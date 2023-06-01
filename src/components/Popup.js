@@ -34,13 +34,12 @@ export default class Popup {
     };
 
     /** Функция отображения Preloader */
-    renderPreloader(isLoading, displayText) {
+    renderLoading(isLoading, displayText) {
         if (!this._buttonSubmit) return
         if (isLoading) {
             this.defaultText = this._buttonSubmit.textContent;
             this._buttonSubmit.textContent = displayText;
         } else {
-            
             this._buttonSubmit.textContent = this.defaultText;
         }
     };
