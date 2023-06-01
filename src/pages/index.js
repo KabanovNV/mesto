@@ -154,6 +154,7 @@ const popupDelCardConfirm = new PopupWithConfirmation('.popup_confirmation', {
       .then(() => {
         popupDelCardConfirm.close();
       })
+      .catch((err) => alert(err))
       .finally(() => {
         popupDelCardConfirm.renderLoading(false);
       })
